@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY=config('SECRET_KEY')
 DEBUG=config('DEBUG',default=False,cast=bool)
 
-ALLOWED_HOSTS = ['pizza-delivery-app01.herokuapp.com',]
+ALLOWED_HOSTS = ['pizza-delivery-app-0.herokuapp.com',]
 
 
 # Application definition
