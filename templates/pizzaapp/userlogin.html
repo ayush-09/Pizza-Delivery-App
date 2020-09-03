@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<div class="container-fluid" style="position:absolute;height:800px;background-size:cover;background-image:url({% static "img\food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg" %})">
+  <div class="container" style="width:300px;height:250px;padding:30px;border-style: solid;border-color:#FF5733 ;border-radius: 15px;margin-top:300px">
+    <h1 style="color:#FF5733  ;text-align:center;font-style:Verdana">Login</h1>
+    <form action="/customer/authenticate/" method="post">
+      {%csrf_token%}
+      <input type="text" class="form-control" placeholder="username" name="username" style="margin-bottom:10px">
+      <input type="password" class="form-control" placeholder="password" name="password" style="margin-bottom:10px">
+      <input type="submit" class="btn btn-outline-success" style="display:block;margin:auto" >
+    </form>
+    {%for message in messages%}
+      <p style="text-align:center">{{message}}</p>
+    {%endfor%}
+  </div>
+</div>
+
+
+{%endblock%}

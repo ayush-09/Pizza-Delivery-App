@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light bg-dark">
+  <a class="navbar-brand" style="color:white">Welcome  {{username}}</a>
+  <a class="nav-item"style="color:white;text-decoration:none" href="/userorders/">My Orders </a>
+  <!--form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  -->
+    <a class="btn btn-outline-danger" href="/userlogout/">logout</a>
+</nav>
+<div class="container-fluid" style="position:relative;height:800px;background-size:cover;background-image:url({% static "img\Gabriel-Pizza-2.jpg"%})">
+  {% for message in messages %}
+  <p style="color:green;text-align:center">{{message}}</p>
+  {%endfor%}
+  <form class="" action="/placeorder/" method="post">
+    {%csrf_token%}
+    <div class="container" style="margin:auto;width:600px">
+      <table style="width:100%">
+        <tr>
+          <th style="color:#FBF600  ;text-align:center;font-family:georgia,garamond,serif;font-size:25px"><b><u>All Veg & Non-Veg Pizza Mania</u></b></th>
+        </tr><br>
+
+          <tr>
+            <br>
+            <th style="color:white;font-size:20px">Pizza</th>
+            <th style="color:white;font-size:20px ">Price</th>
+            <th style="color:white;font-size:20px;padding:5px">Quantity</th>
+          </tr>
+          {%for pizza in pizzas %}
+          <tr>
+              <td style="color:black;padding:10px"><b> {{pizza.name}} </b></td>
+              <td style="color:black;padding:10px"><b> Rs.{{pizza.price}} </b></td>
+              <td><input type="number" name="{{pizza.id}}" min="0" value="0" style="width:60px" name="quantity" ></td>
+          </tr>
+          {% endfor %}
+      </table>
+      <input type="text"placeholder="Address" style="width:400px;margin-top:100px" name="address">
+      <input type="submit" name="" style="float:right;margin-top:100px;font-size:17px" class="btn btn-outline-success" value="Place Order">
+    </div>
+  </form>
+</div>
+
+{% endblock %}

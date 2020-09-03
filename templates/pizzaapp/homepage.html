@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light bg-dark"  >
+  <a class="navbar-brand" style="color:white">Welcome </a>
+  <!--form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  -->
+    <a class="btn btn-outline-danger" href="/loginuser/">login</a>
+</nav>
+{% for message in messages %}
+<p style="text-align:center;color:orange">{{message}}</p>
+{%endfor%}
+<div class="container-fluid" style="position:relative;height:800px;background-size:cover;background-image:url({% static "img\1526465910.jpg" %})">
+    <div style="position:absolute;top:30px;right:20px;width:500px;padding:40px;height:330px;border-style: solid;border-color:#4A1C00 ;border-radius: 15px; "class="container">
+      <h1 style="text-align:center;color:#4A1C00 ">Sign Up!</h1>
+      <br>
+        <form class="" action="/signupuser/" method="post">
+          {%csrf_token%}
+            <input  class="form-control" placeholder="Username" type="text" name="username" style="margin-bottom:10px" >
+            <input class="form-control" placeholder="Password" type="password" name="password" style="margin-bottom:10px">
+            <input class="form-control"  placeholder="Mobile_No" type="text" name="Mobile_No" style="margin-bottom:10px">
+            <input style="display:block;margin:auto;margin-top:20px" type="submit" class="btn btn-outline-success">
+        </form>
+    </div>
+</div>
+{% endblock %}
